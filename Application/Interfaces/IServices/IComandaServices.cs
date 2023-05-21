@@ -13,6 +13,6 @@ namespace Application.Interfaces.Services
         Task UpdateComanda(Comanda comanda);
         Task DeleteComanda(Guid id);
 
-        Task<IEnumerable<ComandaResponse>> GetComandas(DateTime fecha);
+        Task<IEnumerable<ComandaResponse>> GetComandas(string fecha);
     }
 }

@@ -5,6 +5,7 @@ using Application.Interfaces.Services;
 using Application.Request;
 using Application.Response;
 using Domain.Entities;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Application.UseCase
 {
@@ -35,14 +36,14 @@ namespace Application.UseCase
                 TipoMercaderia tipoMercaderia = await _tipoMercaderiaQuery.GetById(request.tipo);
                 if (tipoMercaderia == null)
                 {
-                    throw new HasConflict("El tipo de mercaderia especificado no existe en la base de datos");
+                    throw new HasConflictException("El tipo de mercaderia especificado no existe en la base de datos");
                 }
                 IEnumerable<Mercaderia> mercaderias = await _mercaderiaQuery.GetAll();
                 foreach (Mercaderia product in mercaderias)
                 {
-                    if (product.Nombre == request.nombre)
+                    if (product.Nombre.ToUpper() == request.nombre.ToUpper())
                     {
-                        throw new HasConflict("Esta mercaderia ya existe.");
+                        throw new HasConflictException("Esta mercaderia ya existe.");
                     }
                 }
 
@@ -71,9 +72,9 @@ namespace Application.UseCase
                     imagen = mercaderia.Imagen
                 };
             }
-            catch(HasConflict ex) 
+            catch(HasConflictException ex) 
             {
-                throw new HasConflict("Error en la operacion: " + ex.Message);
+                throw new HasConflictException("Error en la operacion: " + ex.Message);
             }
         }
 
@@ -86,13 +87,13 @@ namespace Application.UseCase
             {
                 if(comandaMercaderia.MercaderiaId == id) 
                 {
-                    return null;
+                    throw new HasConflictException("No se puede eliminar la mercaderia ya que pertenece almenos a una comanda");
                 }
             }
             var mercaderia = await _mercaderiaCommand.Delete(id);
             if(mercaderia == null) 
             {
-                return null;
+                throw new BadRequestException("No existe mercaderia con ese Id");
             }
             return new MercaderiaResponse
             {
@@ -137,7 +138,7 @@ namespace Application.UseCase
 
                 };
             }
-            return null;
+            throw new NotFoundException("No existe mercaderia con ese Id");
         }
 
         public async Task<IEnumerable<MercaderiaResponse>> GetMercaderias(int tipo, string nombre, string orden)

@@ -1,9 +1,11 @@
-﻿using Application.Interfaces.ICommands;
+﻿using Application.Exceptions;
+using Application.Interfaces.ICommands;
 using Application.Interfaces.IQuerys;
 using Application.Interfaces.Services;
 using Application.Request;
 using Application.Response;
 using Domain.Entities;
+using System.Globalization;
 
 namespace Application.UseCase
 {
@@ -65,7 +67,7 @@ namespace Application.UseCase
                 }
                 return comandaGetResponse;
             }
-            return null;
+            throw new NotFoundException("No existe comanda con ese Id");
         }
 
 
@@ -86,6 +88,10 @@ namespace Application.UseCase
 
         public async Task<ComandaResponse> CreateComanda(ComandaRequest comandaRequest)
         {
+            if (comandaRequest.formaEntrega < 1 || comandaRequest.formaEntrega > 3)
+            {
+                throw new SyntaxErrorException("Forma entrega invalida");
+            }
             var result = await _comandaCommand.Create(comandaRequest);
             FormaEntrega formaEntrega = await _formaEntregaQuery.GetById(result.FormaEntregaId);
             ComandaResponse comandaResponse = new ComandaResponse
@@ -114,9 +120,14 @@ namespace Application.UseCase
         }
 
 
-        public async Task<IEnumerable<ComandaResponse>> GetComandas(DateTime fecha) 
+        public async Task<IEnumerable<ComandaResponse>> GetComandas(string fecha) 
         {
-            var comandas = await _comandaQuery.GetComandas(fecha);
+            DateTime fechaParseada;
+            if (!DateTime.TryParseExact(fecha, "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-AR"), DateTimeStyles.None, out fechaParseada))
+            {
+                throw new BadRequestException("Error en el formato de la fecha");
+            }
+            var comandas = await _comandaQuery.GetComandas(fechaParseada);
 
             var comandaResponses = new List<ComandaResponse>();
 

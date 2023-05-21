@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.Services;
+﻿using Application.Exceptions;
+using Application.Interfaces.Services;
 using Application.Request;
 using Application.Response;
 using Domain.Entities;
@@ -19,48 +20,52 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ComandaGetResponse))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BadRequest))]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(BadRequest))]
-        public async Task<IActionResult> GetComandaById(Guid comandaId)
+        [ProducesResponseType(typeof(ComandaGetResponse), 200)]
+        [ProducesResponseType(typeof(BadRequest), 400)]
+        [ProducesResponseType(typeof(BadRequest), 404)]
+        public async Task<IActionResult> GetComandaById(Guid id)
         {
-            var result = await _comandaService.GetComandaById(comandaId);
-            if (result == null)
+            try
             {
-                return NotFound(new { message = "No se encontro la comanda" });
+                var result = await _comandaService.GetComandaById(id);
+                return Ok(result);
             }
-
-            return new JsonResult(result) { StatusCode = StatusCodes.Status200OK };
+            catch(NotFoundException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }){ StatusCode = 404 };
+            }
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(BadRequest), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetComandas(DateTime fecha)
+        [ProducesResponseType(typeof(IEnumerable<ComandaResponse>), 200)]
+        [ProducesResponseType(typeof(BadRequest), 400)]
+        public async Task<IActionResult> GetComandas(string fecha)
         {
-            var result = await _comandaService.GetComandas(fecha);
-
-            if (result == null)
+            try
             {
-                return NotFound(new { message = "No se encontraron comandas" });
+                var result = await _comandaService.GetComandas(fecha);
+                return Ok(result);
             }
-
-            return new JsonResult(result) { StatusCode = StatusCodes.Status200OK };
+            catch(BadRequestException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 400 };
+            }
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(Comanda), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ComandaResponse), 201)]
+        [ProducesResponseType(typeof(BadRequest), 400)]
         public async Task<IActionResult> CreateComanda(ComandaRequest request)
         {
-            var result = await _comandaService.CreateComanda(request);
-
-            if (result == null)
+            try
             {
-                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
-            }
+                var result = await _comandaService.CreateComanda(request);
 
-            return new JsonResult(result) { StatusCode = StatusCodes.Status201Created };
+                return new JsonResult(result) { StatusCode = StatusCodes.Status201Created };
+            }catch(SyntaxErrorException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 400 };
+            }
         }
         
     }

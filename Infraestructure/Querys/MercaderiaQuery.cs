@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.IQuerys;
+﻿using Application.Exceptions;
+using Application.Interfaces.IQuerys;
 using Domain.Entities;
 using Infraestructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -44,11 +45,15 @@ namespace Infraestructure.Querys
             {
                 mercaderias = mercaderias.OrderByDescending(m => m.Precio);
             }
-            else
+            else if(orden.ToUpper() == "ASC")
             {
                 mercaderias = mercaderias.OrderBy(m => m.Precio);
             }
-
+            else
+            {
+                throw new BadRequestException("Orden no valido, Solo se admite ASC o DESC");
+            }
+            
             mercaderias = mercaderias.ToList();
             return mercaderias;
         }

@@ -22,23 +22,25 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
 
         [HttpGet("/api/v1/Mercaderia/{id}")]
         [ProducesResponseType(typeof(MercaderiaResponse), 200)]
-        [ProducesResponseType(typeof(BadRequestResult), 400)]
-        [ProducesResponseType(typeof(BadRequestResult), 404)]
+        [ProducesResponseType(typeof(BadRequest), 400)]
+        [ProducesResponseType(typeof(BadRequest), 404)]
         public async Task<IActionResult> GetMercaderiaById([FromRoute] int id)
         {
-            if (id <= 0)
+            try
             {
-                return BadRequest(new { message = "El valor del parámetro id no es válido" });
+                if (id <= 0)
+                {
+                    return new JsonResult(new BadRequest { message = "El valor del parámetro id no es válido" }){StatusCode = 400};
+                }
+
+                var result = await _mercaderiaService.GetMercaderiaById(id);
+
+                return Ok(result);
             }
-
-            var result = await _mercaderiaService.GetMercaderiaById(id);
-
-            if (result == null)
+            catch(NotFoundException ex)
             {
-                return NotFound(new { message = "No se encontró la mercadería" });
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 404 };
             }
-
-            return Ok(result);
         }
 
         [HttpDelete("{id}")]
@@ -47,28 +49,38 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
         [ProducesResponseType(typeof(BadRequest), 409)]
         public async Task<IActionResult> DeleteMercaderia(int id)
         {
-            var result = await _mercaderiaService.DeleteMercaderia(id);
-            if (result == null)
+            try
             {
-                return NotFound();
+                var result = await _mercaderiaService.DeleteMercaderia(id);
+                return Ok(result);
+            }
+            catch (HasConflictException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 409 };
+            }
+            catch (BadRequestException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 400 };
             }
 
-            return Ok(result);
         }
 
-        [HttpPost]
+        [HttpPost("/api/v1/Mercaderia")]
+        [ProducesResponseType(typeof(MercaderiaResponse), 201)]
+        [ProducesResponseType(typeof(BadRequest), 400)]
+        [ProducesResponseType(typeof(BadRequest), 409)]
         public async Task<IActionResult> CreateMercaderia(MercaderiaRequest request)
         {
             try
             {
                 var result = await _mercaderiaService.CreateMercaderia(request);
                 return new JsonResult(result) { StatusCode = StatusCodes.Status201Created };
-            
-            }catch(HasConflict ex)
+
+            } catch (HasConflictException ex)
             {
                 return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 409 };
             }
-            catch(SyntaxError ex)
+            catch (SyntaxErrorException ex)
             {
                 return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 400 };
             }
@@ -80,7 +92,7 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
         public async Task<IActionResult> UpdateMercaderia(int mercaderiaId, MercaderiaRequest request)
         {
             var result = await _mercaderiaService.UpdateMercaderia(mercaderiaId, request);
-            if(result == null)
+            if (result == null)
             {
                 return NotFound(new { message = "No se encontro la mercaderia" });
             }
@@ -88,18 +100,18 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
         }
 
         [HttpGet("/api/v1/Mercaderia")]
-        [ProducesResponseType(typeof(IEnumerable<MercaderiaGetResponse>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(BadRequest), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(IEnumerable<MercaderiaGetResponse>),200)]
+        [ProducesResponseType(typeof(BadRequest), 400)]
         public async Task<IActionResult> GetMercaderias(int tipo, string? nombre, string orden = "ASC") 
         {
-            var result = await _mercaderiaService.GetMercaderias(tipo, nombre, orden);
-
-            if(result == null) 
+            try
             {
-                return NotFound(new { message = "No se encontraron mercaderias" });
+                var result = await _mercaderiaService.GetMercaderias(tipo, nombre, orden);
+                return Ok(result);
+            }catch(BadRequestException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }){ StatusCode = 400 };
             }
-
-            return Ok(result);
         }
     }
 
