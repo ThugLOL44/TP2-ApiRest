@@ -154,50 +154,5 @@ namespace Application.UseCase
             }
             return null;
         }
-
-        //public async Task<IEnumerable<ComandaResponse>> GetComandas(DateTime fecha)
-        //{
-        //    var comandas = await _comandaQuery.GetComandas(fecha);
-        //    var comandaResponses = new List<ComandaResponse>();
-        //    if (comandas != null)
-        //    {
-        //        foreach (var comanda in comandas)
-        //        {
-        //            var comandaResponse = new ComandaResponse
-        //            {
-        //                id = comanda.ComandaId,
-        //                mercaderias = new List<ComandaMercaderiaResponse>()
-        //            };
-        //            foreach (var comandaMercaderia in comanda.ComandaMercaderia)
-        //            {
-        //                var comandaMercaderiaResponse = new ComandaMercaderiaResponse
-        //                {
-        //                    Mercaderia = new MercaderiaResponse
-        //                    {
-        //                        id = comandaMercaderia.MercaderiaId,
-        //                        tipo = new TipoMercaderiaResponse
-        //                        {
-        //                            id = comandaMercaderia.Mercaderia.TipoMercaderiaId,
-        //                            descripcion = comandaMercaderia.Mercaderia.TipoMercaderia.Descripcion
-        //                        },
-        //                        nombre = comandaMercaderia.Mercaderia.Nombre,
-        //                        precio = comandaMercaderia.Mercaderia.Precio
-        //                    }
-        //                };
-        //                comandaResponse.mercaderias.Add(comandaMercaderiaResponse);
-        //            }
-        //            comandaResponse.formaEntrega = new FormaEntregaResponse
-        //            {
-        //                id = comanda.FormaEntrega.FormaEntregaId,
-        //                descripcion = comanda.FormaEntrega.Descripcion
-        //            };
-        //            comandaResponse.total = comanda.PrecioTotal;
-        //            comandaResponse.fecha = comanda.Fecha.ToString();
-        //            comandaResponses.Add(comandaResponse);
-
-        //        }
-        //    }
-        //    return comandaResponses;
-        //}
     }
 }

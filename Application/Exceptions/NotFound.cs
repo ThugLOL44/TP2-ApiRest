@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Application.Exceptions
 {
-    internal class NotFound
+    public class NotFound : Exception
     {
+        public NotFound(string message) : base(message)
+        {
+        }
+
+        public NotFound(string message, Exception innerException) : base(message, innerException)
+        {
+        }
     }
 }

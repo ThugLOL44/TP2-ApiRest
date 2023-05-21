@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Application.Exceptions
 {
-    internal class HasConflict
+    public class HasConflict : Exception
     {
+
+
+        public HasConflict(string message) : base(message)
+        {
+        }
+
+        public HasConflict(string message, Exception innerException) : base(message, innerException)
+        {
+        }
     }
 }

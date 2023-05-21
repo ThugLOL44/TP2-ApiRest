@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.ICommands;
+﻿using Application.Exceptions;
+using Application.Interfaces.ICommands;
 using Application.Interfaces.IQuerys;
 using Application.Interfaces.Services;
 using Application.Request;
@@ -29,31 +30,51 @@ namespace Application.UseCase
 
         public async Task<MercaderiaResponse> CreateMercaderia(MercaderiaRequest request)
         {
-            TipoMercaderia tipoMercaderia = await _tipoMercaderiaQuery.GetById(request.tipo);
-            Mercaderia mercaderia = new Mercaderia
+            try
             {
-                Nombre = request.nombre,
-                TipoMercaderiaId = request.tipo,
-                Precio = request.precio,
-                Ingredientes = request.ingredientes,
-                Preparacion = request.preparacion,
-                Imagen = request.imagen
-            };
-            await _mercaderiaCommand.Insert(mercaderia);
-            return new MercaderiaResponse
-            {
-                id = mercaderia.MercaderiaId,
-                nombre = mercaderia.Nombre,
-                tipo = new TipoMercaderiaResponse 
+                TipoMercaderia tipoMercaderia = await _tipoMercaderiaQuery.GetById(request.tipo);
+                if (tipoMercaderia == null)
                 {
-                    id = mercaderia.TipoMercaderiaId,
-                    descripcion = tipoMercaderia.Descripcion      
-                },
-                precio = mercaderia.Precio,
-                ingredientes = mercaderia.Ingredientes,
-                preparacion = mercaderia.Preparacion,
-                imagen = mercaderia.Imagen
-            };
+                    throw new HasConflict("El tipo de mercaderia especificado no existe en la base de datos");
+                }
+                IEnumerable<Mercaderia> mercaderias = await _mercaderiaQuery.GetAll();
+                foreach (Mercaderia product in mercaderias)
+                {
+                    if (product.Nombre == request.nombre)
+                    {
+                        throw new HasConflict("Esta mercaderia ya existe.");
+                    }
+                }
+
+                Mercaderia mercaderia = new Mercaderia
+                {
+                    Nombre = request.nombre,
+                    TipoMercaderiaId = request.tipo,
+                    Precio = request.precio,
+                    Ingredientes = request.ingredientes,
+                    Preparacion = request.preparacion,
+                    Imagen = request.imagen
+                };
+                await _mercaderiaCommand.Insert(mercaderia);
+                return new MercaderiaResponse
+                {
+                    id = mercaderia.MercaderiaId,
+                    nombre = mercaderia.Nombre,
+                    tipo = new TipoMercaderiaResponse
+                    {
+                        id = mercaderia.TipoMercaderiaId,
+                        descripcion = tipoMercaderia.Descripcion
+                    },
+                    precio = mercaderia.Precio,
+                    ingredientes = mercaderia.Ingredientes,
+                    preparacion = mercaderia.Preparacion,
+                    imagen = mercaderia.Imagen
+                };
+            }
+            catch(HasConflict ex) 
+            {
+                throw new HasConflict("Error en la operacion: " + ex.Message);
+            }
         }
 
 

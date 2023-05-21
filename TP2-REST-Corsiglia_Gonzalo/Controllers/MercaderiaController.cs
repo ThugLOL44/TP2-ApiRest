@@ -1,9 +1,11 @@
-﻿using Application.Interfaces.Services;
+﻿using Application.Exceptions;
+using Application.Interfaces.Services;
 using Application.Request;
 using Application.Response;
 using Microsoft.AspNetCore.Http;
 
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks.Dataflow;
 
 namespace TP2_REST_Corsiglia_Gonzalo.Controllers
 {
@@ -57,12 +59,19 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateMercaderia(MercaderiaRequest request)
         {
-            var result = await _mercaderiaService.CreateMercaderia(request);
-            if(result == null)
+            try
             {
-                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+                var result = await _mercaderiaService.CreateMercaderia(request);
+                return new JsonResult(result) { StatusCode = StatusCodes.Status201Created };
+            
+            }catch(HasConflict ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 409 };
             }
-            return new JsonResult(result) { StatusCode = StatusCodes.Status201Created } ;
+            catch(SyntaxError ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 400 };
+            }
         }
 
         [HttpPut("mercaderia/{id}")]
