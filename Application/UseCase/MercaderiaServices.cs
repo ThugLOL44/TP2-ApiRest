@@ -185,6 +185,7 @@ namespace Application.UseCase
             }
 
             TipoMercaderia tipoMercaderia = await _tipoMercaderiaQuery.GetById(request.tipo);
+
             return new MercaderiaResponse
             {
                 id = mercaderia.MercaderiaId,

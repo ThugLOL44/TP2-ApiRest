@@ -28,9 +28,17 @@ namespace Infraestructure.Commands
         {
             var updateMercaderia = _context.Mercaderia
                 .FirstOrDefault(x => x.MercaderiaId == mercaderiaId);
+
             if(updateMercaderia == null)
             {
                 throw new NotFoundException("No existe una mercaderia con ese Id");
+            }
+
+            var updateTipoMercaderia = _context.TipoMercaderia
+                .FirstOrDefault(x => x.TipoMercaderiaId == request.tipo);
+            if(updateTipoMercaderia == null)
+            {
+                throw new NotFoundException("El tipo de mercaderia especificado no existe en la base de datos");  
             }
             updateMercaderia.Nombre = request.nombre;
             updateMercaderia.TipoMercaderiaId = request.tipo;

@@ -86,7 +86,7 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
             }
         }
 
-        [HttpPut("mercaderia/{id}")]
+        [HttpPut("{id}")]
         [ProducesResponseType(typeof(MercaderiaResponse), 200)]
         [ProducesResponseType(typeof(BadRequest), 400)]
         [ProducesResponseType(typeof(BadRequest), 404)]
