@@ -24,7 +24,7 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
         [ProducesResponseType(typeof(MercaderiaResponse), 200)]
         [ProducesResponseType(typeof(BadRequest), 400)]
         [ProducesResponseType(typeof(BadRequest), 404)]
-        public async Task<IActionResult> GetMercaderiaById([FromRoute] int id)
+        public async Task<IActionResult> GetMercaderiaById(int id)
         {
             try
             {
@@ -87,16 +87,24 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
         }
 
         [HttpPut("mercaderia/{id}")]
-        [ProducesResponseType(typeof(MercaderiaResponse), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(object), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> UpdateMercaderia(int mercaderiaId, MercaderiaRequest request)
+        [ProducesResponseType(typeof(MercaderiaResponse), 200)]
+        [ProducesResponseType(typeof(BadRequest), 400)]
+        [ProducesResponseType(typeof(BadRequest), 404)]
+        [ProducesResponseType(typeof(BadRequest), 409)]
+        public async Task<IActionResult> UpdateMercaderia(int id, MercaderiaRequest request)
         {
-            var result = await _mercaderiaService.UpdateMercaderia(mercaderiaId, request);
-            if (result == null)
+            try
             {
-                return NotFound(new { message = "No se encontro la mercaderia" });
+                var result = await _mercaderiaService.UpdateMercaderia(id, request);
+                return Ok(result);
+            }catch(NotFoundException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 404 };
             }
-            return new JsonResult(result) { StatusCode = StatusCodes.Status200OK };
+            catch(HasConflictException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 409 };
+            }
         }
 
         [HttpGet("/api/v1/Mercaderia")]

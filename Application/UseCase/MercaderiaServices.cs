@@ -174,6 +174,16 @@ namespace Application.UseCase
         {
             await _mercaderiaCommand.Update(mercaderiaId, request);
             Mercaderia mercaderia = await _mercaderiaQuery.GetById(mercaderiaId);
+            IEnumerable<Mercaderia> mercaderias = await _mercaderiaQuery.GetAll();
+
+            foreach (Mercaderia product in mercaderias)
+            {
+                if (product.Nombre.ToUpper() == request.nombre.ToUpper())
+                {
+                    throw new HasConflictException("El nombre ya es utilizado por otra mercaderia.");
+                }
+            }
+
             TipoMercaderia tipoMercaderia = await _tipoMercaderiaQuery.GetById(request.tipo);
             return new MercaderiaResponse
             {

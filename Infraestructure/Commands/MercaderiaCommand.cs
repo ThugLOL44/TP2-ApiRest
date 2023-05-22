@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.ICommands;
+﻿using Application.Exceptions;
+using Application.Interfaces.ICommands;
 using Application.Request;
 using Domain.Entities;
 using Infraestructure.Persistence;
@@ -27,7 +28,10 @@ namespace Infraestructure.Commands
         {
             var updateMercaderia = _context.Mercaderia
                 .FirstOrDefault(x => x.MercaderiaId == mercaderiaId);
-            
+            if(updateMercaderia == null)
+            {
+                throw new NotFoundException("No existe una mercaderia con ese Id");
+            }
             updateMercaderia.Nombre = request.nombre;
             updateMercaderia.TipoMercaderiaId = request.tipo;
             updateMercaderia.Precio = request.precio;
