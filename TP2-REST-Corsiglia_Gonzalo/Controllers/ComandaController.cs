@@ -19,7 +19,7 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
             _comandaService = comandaService;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("/api/v1/Comanda/{id}")]
         [ProducesResponseType(typeof(ComandaGetResponse), 200)]
         [ProducesResponseType(typeof(BadRequest), 400)]
         [ProducesResponseType(typeof(BadRequest), 404)]
@@ -36,7 +36,7 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("/api/v1/Comanda")]
         [ProducesResponseType(typeof(IEnumerable<ComandaResponse>), 200)]
         [ProducesResponseType(typeof(BadRequest), 400)]
         public async Task<IActionResult> GetComandas(string fecha)
@@ -52,7 +52,7 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("/api/v1/Comanda")]
         [ProducesResponseType(typeof(ComandaResponse), 201)]
         [ProducesResponseType(typeof(BadRequest), 400)]
         public async Task<IActionResult> CreateComanda(ComandaRequest request)

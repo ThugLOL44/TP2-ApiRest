@@ -16,7 +16,7 @@ namespace Infraestructure.Persistence
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost;Database=2pac;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer(@"Server=localhost;Database=TP2-REST;Trusted_Connection=True;TrustServerCertificate=True;");
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

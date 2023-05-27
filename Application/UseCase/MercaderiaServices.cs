@@ -91,10 +91,7 @@ namespace Application.UseCase
                 }
             }
             var mercaderia = await _mercaderiaCommand.Delete(id);
-            if(mercaderia == null) 
-            {
-                throw new BadRequestException("No existe mercaderia con ese Id");
-            }
+            
             return new MercaderiaResponse
             {
                 id = mercaderia.MercaderiaId,
@@ -141,7 +138,7 @@ namespace Application.UseCase
             throw new NotFoundException("No existe mercaderia con ese Id");
         }
 
-        public async Task<IEnumerable<MercaderiaResponse>> GetMercaderias(int tipo, string nombre, string orden)
+        public async Task<IEnumerable<MercaderiaResponse>> GetMercaderias(int tipo, string nombre, string? orden)
         {
             var mercaderias = await _mercaderiaQuery.GetMercaderias(tipo, nombre, orden);
             var mercaderiaResponses = new List<MercaderiaResponse>();

@@ -28,9 +28,9 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
         {
             try
             {
-                if (id <= 0)
+                if (!int.TryParse(id.ToString(), out _))
                 {
-                    return new JsonResult(new BadRequest { message = "El valor del parámetro id no es válido" }){StatusCode = 400};
+                    throw new BadRequestException("El formato de id ingresado es invalido");
                 }
 
                 var result = await _mercaderiaService.GetMercaderiaById(id);
@@ -41,9 +41,13 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
             {
                 return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 404 };
             }
+            catch (BadRequestException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 400 };
+            }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("/api/v1/Mercaderia/{id}")]
         [ProducesResponseType(typeof(MercaderiaResponse), 200)]
         [ProducesResponseType(typeof(BadRequest), 400)]
         [ProducesResponseType(typeof(BadRequest), 409)]
@@ -51,6 +55,11 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
         {
             try
             {
+                if (!int.TryParse(id.ToString(), out _))
+                {
+                    throw new BadRequestException("El formato de id ingresado es invalido");
+                }
+
                 var result = await _mercaderiaService.DeleteMercaderia(id);
                 return Ok(result);
             }
@@ -61,6 +70,10 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
             catch (BadRequestException ex)
             {
                 return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 400 };
+            }
+            catch (NotFoundException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 404 };
             }
 
         }
@@ -86,7 +99,7 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("/api/v1/Merecaderia/{id}")]
         [ProducesResponseType(typeof(MercaderiaResponse), 200)]
         [ProducesResponseType(typeof(BadRequest), 400)]
         [ProducesResponseType(typeof(BadRequest), 404)]
@@ -95,6 +108,11 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
         {
             try
             {
+                if (!int.TryParse(id.ToString(), out _))
+                {
+                    throw new BadRequestException("El formato de id ingresado es invalido");
+                }
+
                 var result = await _mercaderiaService.UpdateMercaderia(id, request);
                 return Ok(result);
             }catch(NotFoundException ex)
@@ -110,7 +128,7 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
         [HttpGet("/api/v1/Mercaderia")]
         [ProducesResponseType(typeof(IEnumerable<MercaderiaGetResponse>),200)]
         [ProducesResponseType(typeof(BadRequest), 400)]
-        public async Task<IActionResult> GetMercaderias(int tipo, string? nombre, string orden = "ASC") 
+        public async Task<IActionResult> GetMercaderias(int tipo, string? nombre, string? orden = "ASC") 
         {
             try
             {

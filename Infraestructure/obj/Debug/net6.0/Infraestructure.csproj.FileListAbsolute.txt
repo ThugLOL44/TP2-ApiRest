@@ -169,3 +169,41 @@ C:\Users\gonzalo.corsiglia\Desktop\TP2-REST-Corsiglia_Gonzalo\Infraestructure\ob
 C:\Users\gonzalo.corsiglia\Desktop\TP2-REST-Corsiglia_Gonzalo\Infraestructure\obj\Debug\net6.0\Infraestructure.pdb
 C:\Users\gonzalo.corsiglia\Desktop\TP2-REST-Corsiglia_Gonzalo\Infraestructure\obj\Debug\net6.0\Infraestructure.genruntimeconfig.cache
 C:\Users\gonzalo.corsiglia\Desktop\TP2-REST-Corsiglia_Gonzalo\Infraestructure\obj\Debug\net6.0\ref\Infraestructure.dll
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Infraestructure.deps.json
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Infraestructure.runtimeconfig.json
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Infraestructure.dll
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Infraestructure.pdb
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Application.dll
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Domain.dll
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Application.pdb
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Domain.pdb
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.csproj.AssemblyReference.cache
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.AssemblyInfoInputs.cache
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.AssemblyInfo.cs
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.csproj.CopyComplete
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.dll
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\refint\Infraestructure.dll
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.pdb
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.genruntimeconfig.cache
+C:\Users\Peceta\OneDrive\Desktop\Nueva carpeta\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\ref\Infraestructure.dll
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Infraestructure.deps.json
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Infraestructure.runtimeconfig.json
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Infraestructure.dll
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Infraestructure.pdb
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Application.dll
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Domain.dll
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Application.pdb
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\bin\Debug\net6.0\Domain.pdb
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.csproj.AssemblyReference.cache
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.AssemblyInfoInputs.cache
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.AssemblyInfo.cs
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.csproj.CopyComplete
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.dll
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\refint\Infraestructure.dll
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.pdb
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\Infraestructure.genruntimeconfig.cache
+C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Infraestructure\obj\Debug\net6.0\ref\Infraestructure.dll

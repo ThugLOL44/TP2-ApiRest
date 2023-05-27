@@ -61,7 +61,7 @@ namespace Infraestructure.Commands
 
             if (mercaderia == null)
             {
-                return null;
+                throw new NotFoundException("No existe mercaderia con ese Id");
             }
 
             _context.Mercaderia.Remove(mercaderia);

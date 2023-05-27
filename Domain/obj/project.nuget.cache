@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X4129c4dFeB0NC6GFdhN4l0swuS+UTspntyrjUMvWVPiI5GTLoLA0lYw0KMm1rwgssNN6ILG3YJuTizAkVaU/w==",
+  "dgSpecHash": "OrEJGl8dWmqV8Qfs1Rp9dBzYm7jPyDBY7OOoi2IiUvWfMKcprgmWXZJrJatzhjrMHhAef4FCgs6nQvYL/IrRdA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Peceta\\OneDrive\\Desktop\\TP2-REST-Corsiglia_Gonzalo\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\Peceta\\OneDrive\\Desktop\\Uni Primer Cuatrimestre\\TP2 Rest Api\\TP2-ApiRest\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Peceta\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Peceta\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
