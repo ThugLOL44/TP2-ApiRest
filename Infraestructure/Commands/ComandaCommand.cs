@@ -52,7 +52,7 @@ namespace Infraestructure.Command
             {
                 if (!int.TryParse(mercaderiaId.ToString(), out int _) || mercaderiaId < 1 || mercaderiaId >= _context.Mercaderia.Count())
                 {
-                    throw new SyntaxErrorException("Almenos una de las mercaderias es invalida");
+                    throw new BadRequestException("Almenos una de las mercaderias es invalida");
                 }
             }
 
@@ -61,7 +61,7 @@ namespace Infraestructure.Command
                 .ToListAsync();
             if (mercaderias.IsNullOrEmpty())
             {
-                throw new SyntaxErrorException("Almenos una de las mercaderias es invalida");
+                throw new BadRequestException("Almenos una de las mercaderias es invalida");
             }
             foreach (Mercaderia mercaderia in mercaderias) 
             {

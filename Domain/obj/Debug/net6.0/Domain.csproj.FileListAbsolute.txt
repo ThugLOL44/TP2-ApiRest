@@ -152,3 +152,17 @@ C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRes
 C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Domain\obj\Debug\net6.0\Domain.pdb
 C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Domain\obj\Debug\net6.0\Domain.genruntimeconfig.cache
 C:\Users\Peceta\OneDrive\Desktop\Uni Primer Cuatrimestre\TP2 Rest Api\TP2-ApiRest\Domain\obj\Debug\net6.0\ref\Domain.dll
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\bin\Debug\net6.0\Domain.deps.json
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\bin\Debug\net6.0\Domain.runtimeconfig.json
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\bin\Debug\net6.0\Domain.dll
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\bin\Debug\net6.0\Domain.pdb
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\obj\Debug\net6.0\Domain.dll
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\obj\Debug\net6.0\refint\Domain.dll
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\obj\Debug\net6.0\Domain.pdb
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\obj\Debug\net6.0\Domain.genruntimeconfig.cache
+C:\Users\gonzalo.corsiglia\Desktop\Proyecto Software\TP2 Api Rest x\TP2-ApiRest\Domain\obj\Debug\net6.0\ref\Domain.dll

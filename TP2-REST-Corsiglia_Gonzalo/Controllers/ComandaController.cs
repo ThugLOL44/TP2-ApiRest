@@ -34,6 +34,10 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
             {
                 return new JsonResult(new BadRequest { message = ex.Message }){ StatusCode = 404 };
             }
+            catch(BadRequestException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 400 };
+            }
         }
 
         [HttpGet("/api/v1/Comanda")]
@@ -62,7 +66,7 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
                 var result = await _comandaService.CreateComanda(request);
 
                 return new JsonResult(result) { StatusCode = StatusCodes.Status201Created };
-            }catch(SyntaxErrorException ex)
+            }catch(BadRequestException ex)
             {
                 return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 400 };
             }

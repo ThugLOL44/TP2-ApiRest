@@ -123,6 +123,10 @@ namespace TP2_REST_Corsiglia_Gonzalo.Controllers
             {
                 return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 409 };
             }
+            catch (BadRequestException ex)
+            {
+                return new JsonResult(new BadRequest { message = ex.Message }) { StatusCode = 400 };
+            }
         }
 
         [HttpGet("/api/v1/Mercaderia")]

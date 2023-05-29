@@ -31,6 +31,11 @@ namespace Application.UseCase
 
         public async Task<ComandaGetResponse> GetComandaById(Guid comandaId)
         {
+            if(!Guid.TryParse(comandaId.ToString(), out _)) 
+            {
+                throw new BadRequestException("formato de Guid invalido");
+            }
+
             var comanda = await _comandaQuery.GetById(comandaId);
             
             
@@ -90,7 +95,7 @@ namespace Application.UseCase
         {
             if (comandaRequest.formaEntrega < 1 || comandaRequest.formaEntrega > 3)
             {
-                throw new SyntaxErrorException("Forma entrega invalida");
+                throw new BadRequestException("Forma entrega invalida");
             }
             var result = await _comandaCommand.Create(comandaRequest);
             FormaEntrega formaEntrega = await _formaEntregaQuery.GetById(result.FormaEntregaId);
@@ -123,6 +128,10 @@ namespace Application.UseCase
         public async Task<IEnumerable<ComandaResponse>> GetComandas(string fecha) 
         {
             DateTime fechaParseada = DateTime.Parse(fecha);
+            if (!DateTime.TryParse(fecha, out _) && fecha != null)
+            {
+                throw new BadRequestException("Fecha invalida");
+            }
             var comandas = await _comandaQuery.GetComandas(fechaParseada);
 
             var comandaResponses = new List<ComandaResponse>();

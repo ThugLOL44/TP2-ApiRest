@@ -169,7 +169,6 @@ namespace Application.UseCase
 
         public async Task<MercaderiaResponse> UpdateMercaderia(int mercaderiaId, MercaderiaRequest request)
         {
-            await _mercaderiaCommand.Update(mercaderiaId, request);
             Mercaderia mercaderia = await _mercaderiaQuery.GetById(mercaderiaId);
             IEnumerable<Mercaderia> mercaderias = await _mercaderiaQuery.GetAll();
 
@@ -182,6 +181,9 @@ namespace Application.UseCase
             }
 
             TipoMercaderia tipoMercaderia = await _tipoMercaderiaQuery.GetById(request.tipo);
+
+            await _mercaderiaCommand.Update(mercaderiaId, request);
+
 
             return new MercaderiaResponse
             {
