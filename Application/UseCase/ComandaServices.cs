@@ -122,11 +122,7 @@ namespace Application.UseCase
 
         public async Task<IEnumerable<ComandaResponse>> GetComandas(string fecha) 
         {
-            DateTime fechaParseada;
-            if (!DateTime.TryParseExact(fecha, "dd/MM/yyyy", CultureInfo.GetCultureInfo("es-AR"), DateTimeStyles.None, out fechaParseada))
-            {
-                throw new BadRequestException("Error en el formato de la fecha");
-            }
+            DateTime fechaParseada = DateTime.Parse(fecha);
             var comandas = await _comandaQuery.GetComandas(fechaParseada);
 
             var comandaResponses = new List<ComandaResponse>();
